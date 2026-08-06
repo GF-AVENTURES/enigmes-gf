@@ -1,0 +1,234 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:Arial, Helvetica, sans-serif;
+
+    background:#ececec;
+
+    color:#222;
+
+    padding:20px;
+
+}
+
+/*=====================================================
+ Carte principale
+=====================================================*/
+
+.container{
+
+    max-width:650px;
+
+    margin:30px auto;
+
+    background:#ffffff;
+
+    border-radius:12px;
+
+    padding:30px;
+
+    box-shadow:0 0 18px rgba(0,0,0,0.18);
+
+}
+
+/*=====================================================
+ Titre
+=====================================================*/
+
+#titre{
+
+    text-align:center;
+
+    color:#2d5a27;
+
+    font-size:30px;
+
+    line-height:1.4;
+
+    margin-bottom:30px;
+
+}
+
+/*=====================================================
+ Enigme
+=====================================================*/
+
+#enigme{
+
+    font-size:21px;
+
+    line-height:1.8;
+
+    white-space:pre-line;
+
+    margin-bottom:35px;
+
+}
+
+/*=====================================================
+ Zone de réponse
+=====================================================*/
+
+.zone-reponse{
+
+    margin-top:20px;
+
+}
+
+/*=====================================================
+ Champ réponse
+=====================================================*/
+
+input{
+
+    width:100%;
+
+    padding:15px;
+
+    font-size:20px;
+
+    border:1px solid #999;
+
+    border-radius:8px;
+
+    margin-bottom:20px;
+
+}
+
+input:disabled{
+
+    background:#f3f3f3;
+
+    color:#666;
+
+}
+
+/*=====================================================
+ Bouton
+=====================================================*/
+
+button{
+
+    width:100%;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:#2d5a27;
+
+    color:white;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+button:hover{
+
+    background:#21441d;
+
+}
+
+/*=====================================================
+ Messages
+=====================================================*/
+
+#message{
+
+    margin-top:35px;
+
+    text-align:center;
+
+    font-size:22px;
+
+    line-height:1.6;
+
+}
+
+/*=====================================================
+ Mode Organisateur
+=====================================================*/
+
+.mode-test{
+
+    text-align:center;
+
+}
+
+.mode-test h2{
+
+    color:#2d5a27;
+
+    margin-bottom:20px;
+
+}
+
+.mode-test p{
+
+    margin-bottom:25px;
+
+    font-size:19px;
+
+}
+
+.mode-test button{
+
+    margin-bottom:12px;
+
+}
+
+/*=====================================================
+ Smartphone
+=====================================================*/
+
+@media (max-width:600px){
+
+    body{
+
+        padding:10px;
+
+    }
+
+    .container{
+
+        padding:20px;
+
+    }
+
+    #titre{
+
+        font-size:25px;
+
+    }
+
+    #enigme{
+
+        font-size:19px;
+
+    }
+
+    input,
+    button{
+
+        font-size:18px;
+
+    }
+
+    #message{
+
+        font-size:20px;
+
+    }
+
+}
