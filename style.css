@@ -4,70 +4,434 @@
     box-sizing:border-box;
 }
 
+:root{
+    --fond:#51483d;
+    --fond-clair:#6b5d4d;
+
+    --papier:#f0dfb5;
+    --papier-clair:#f8edcf;
+    --papier-fonce:#d6b66f;
+
+    --bord:#ad946b;
+    --encre:#352e25;
+    --brun:#70583d;
+    --brun-fonce:#5c4e3d;
+
+    --vert:#3d5b38;
+    --vert-fonce:#2c4529;
+    --ligne:#b89d70;
+}
+
+html{
+    min-height:100%;
+}
+
 body{
+    min-height:100vh;
+    padding:18px;
+    font-family:Georgia,"Times New Roman",serif;
+    color:var(--encre);
+    background:
+        linear-gradient(135deg,#f3e6bd 0%,#ead8a5 50%,#f1e1b5 100%);
+}
 
-    font-family:Arial, Helvetica, sans-serif;
-
-    background:#ececec;
-
-    color:#222;
-
-    padding:20px;
-
+.page{
+    width:100%;
+    min-height:calc(100vh - 36px);
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
 /*=====================================================
- Carte principale
+ Feuille : même géométrie que la version fonctionnelle
 =====================================================*/
 
-.container{
+.carnet{
+    position:relative;
+    width:100%;
+    max-width:690px;
+    min-height:650px;
 
-    max-width:650px;
+    padding:42px 42px 34px 58px;
 
-    margin:30px auto;
+    background:
+    radial-gradient(ellipse at 20% 20%, rgba(255, 235, 190, .28), transparent 45%),
+    radial-gradient(ellipse at 80% 80%, rgba(110, 70, 25, .10), transparent 50%),
+    linear-gradient(135deg, #c9a66a 0%, #e4c78d 48%, #c7a365 100%);
 
-    background:#ffffff;
+    border:1px solid var(--bord);
 
-    border-radius:12px;
+   clip-path: polygon(
+    0% 0%,
+    2% 0%,
+    4% 0%,
+    6% 0%,
+    8% 0%,
+    10% 0%,
+    12% 0%,
+    14% 0%,
+    16% 0%,
+    18% 0%,
+    20% 0%,
+    22% 0%,
+    24% 0%,
+    26% 0%,
+    28% 0%,
+    30% 0%,
+    32% 0%,
+    34% 0%,
+    36% 0%,
+    38% 0%,
+    40% 0%,
+    42% 0%,
+    44% 0%,
+    46% 0%,
+    48% 0%,
+    50% 0%,
+    52% 0%,
+    54% 0%,
+    56% 0%,
+    58% 0%,
+    60% 0%,
+    62% 0%,
+    64% 0%,
+    66% 0%,
+    68% 0%,
+    70% 0%,
+    72% 0%,
+    74% 0%,
+    76% 0%,
+    78% 0%,
+    80% 0%,
+    82% 0%,
+    84% 0%,
+    86% 0%,
+    88% 0%,
+    90% 0%,
+    92% 0%,
+    94% 0%,
+    96% 0%,
+    98% 0%,
+    100% 0%,
+    100% 0%,
+);
 
-    padding:30px;
+    box-shadow:
+        0 18px 35px rgba(0,0,0,.32),
+        0 3px 8px rgba(0,0,0,.16),
+        inset 0 0 30px rgba(100,72,37,.13);
 
-    box-shadow:0 0 18px rgba(0,0,0,0.18);
-
+    overflow:hidden;
 }
 
 /*=====================================================
- Titre
+ Vieillissement périphérique
 =====================================================*/
+
+.carnet::after{
+    content:"";
+    position:absolute;
+    z-index:1;
+    inset:0;
+    pointer-events:none;
+
+    background:
+        /* Coins anciens */
+        radial-gradient(
+            ellipse at 0% 0%,
+            rgba(105,76,40,.22),
+            transparent 16%
+        ),
+
+        radial-gradient(
+            ellipse at 100% 0%,
+            rgba(105,76,40,.17),
+            transparent 18%
+        ),
+
+        radial-gradient(
+            ellipse at 100% 100%,
+            rgba(105,76,40,.20),
+            transparent 19%
+        ),
+
+        radial-gradient(
+            ellipse at 0% 100%,
+            rgba(105,76,40,.16),
+            transparent 18%
+        ),
+
+        /* Vieillissement très léger des bords */
+        linear-gradient(
+            90deg,
+            rgba(105,76,40,.07),
+            transparent 10%,
+            transparent 90%,
+            rgba(105,76,40,.06)
+        ),
+
+        linear-gradient(
+            0deg,
+            rgba(105,76,40,.06),
+            transparent 10%,
+            transparent 90%,
+            rgba(105,76,40,.06)
+        );
+
+    box-shadow:
+        inset 0 0 30px rgba(91,64,32,.10);
+}
+
+/* =========================================================
+   DÉCHIRURES RÉALISTES DU PARCHEMIN
+   Bord supérieur arraché, irrégulier et naturel
+   ========================================================= */
+
+.carnet .dechirures {
+    position:absolute;
+    inset:0;
+    z-index:4;
+    pointer-events:none;
+}
+
+
+
+
+/* Ombres fines sous les zones arrachées */
+.carnet .dechirures::after {
+    content:"";
+    position:absolute;
+    top:0;
+    left:3%;
+    width:94%;
+    height:26px;
+    z-index:5;
+    pointer-events:none;
+
+    background:
+        linear-gradient(
+            176deg,
+            transparent 0 18%,
+            rgba(75,48,25,.22) 19% 21%,
+            transparent 22% 34%,
+            rgba(75,48,25,.28) 35% 38%,
+            transparent 39% 51%,
+            rgba(75,48,25,.20) 52% 55%,
+            transparent 56% 70%,
+            rgba(75,48,25,.27) 71% 74%,
+            transparent 75%
+        );
+
+    opacity:.75;
+    filter:blur(.6px);
+}
+
+/* Bas + côtés : déchirures naturelles et discrètes */
+.carnet .dechirures::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+
+    background:
+        /* petite cassure en haut à gauche */
+        linear-gradient(32deg,
+            transparent 0 8%,
+            rgba(164,137,96,.55) 8.3% 8.8%,
+            transparent 9.2% 100%
+        ) 1% 0% / 70px 18px no-repeat,
+
+        /* petite cassure en haut à droite */
+        linear-gradient(-28deg,
+            transparent 0 12%,
+            rgba(164,137,96,.48) 12.4% 13%,
+            transparent 13.5% 100%
+        ) 91% 0% / 55px 16px no-repeat,
+
+        /* irrégularité bas gauche */
+        linear-gradient(18deg,
+            transparent 0 18%,
+            rgba(164,137,96,.55) 18.5% 19.2%,
+            transparent 19.7% 100%
+        ) 0% 100% / 75px 20px no-repeat,
+
+        /* irrégularité bas droite */
+        linear-gradient(-22deg,
+            transparent 0 16%,
+            rgba(164,137,96,.48) 16.5% 17.2%,
+            transparent 17.7% 100%
+        ) 100% 100% / 65px 18px no-repeat,
+
+        /* petites fibres latérales */
+        linear-gradient(90deg,
+            rgba(164,137,96,.45) 0 1px,
+            transparent 1px 100%
+        ) 0 32% / 7px 34px no-repeat,
+
+        linear-gradient(90deg,
+            transparent 0 80%,
+            rgba(164,137,96,.42) 80% 81%,
+            transparent 81% 100%
+        ) 100% 61% / 8px 42px no-repeat;
+
+    opacity:.72;
+}
+
+/*=====================================================
+ Petites déchirures supplémentaires sur les coins
+=====================================================*/
+
+.carnet{
+    isolation:isolate;
+}
+
+.carnet > .dechirures{
+    /* Si l'élément existe dans le HTML, il est utilisé. */
+}
+
+/*=====================================================
+ Reliure / perforations
+=====================================================*/
+
+.carnet::before{
+    content:"";
+    position:absolute;
+    z-index:5;
+    left:19px;
+    top:35px;
+    bottom:35px;
+    width:18px;
+
+    background:
+        radial-gradient(
+            circle,
+            #8a795d 0 3px,
+            rgba(88,70,47,.22) 3.5px 5px,
+            transparent 5.5px
+        )
+        center 8px / 18px 34px repeat-y;
+
+    opacity:.72;
+}
+
+/*=====================================================
+ En-tête
+=====================================================*/
+
+.entete{
+    position:relative;
+    z-index:6;
+    text-align:center;
+    padding-bottom:18px;
+    margin-bottom:24px;
+    border-bottom:1px solid var(--ligne);
+}
+
+.titre-principal{
+    color:var(--vert);
+    font-size:2rem;
+    line-height:1.2;
+    font-weight:700;
+    letter-spacing:.3px;
+    margin-bottom:9px;
+}
+
+/*=====================================================
+ Ornement végétal
+=====================================================*/
+
+.ornement{
+    position:relative;
+    width:190px;
+    height:22px;
+    margin:0 auto 8px;
+}
+
+/* lignes */
+.ornement::before,
+.ornement::after{
+    content:"";
+    position:absolute;
+    top:10px;
+    width:61px;
+    height:1px;
+    background:var(--ligne);
+}
+
+.ornement::before{
+    left:0;
+}
+
+.ornement::after{
+    right:0;
+}
+
+/*
+ Motif central : deux petites feuilles de chaque côté
+ du centre. Très léger pour ne pas modifier la hauteur.
+*/
+.ornement{
+    background:
+        radial-gradient(ellipse at 44% 43%,
+            var(--brun) 0 2px,
+            transparent 2.5px
+        ),
+        radial-gradient(ellipse at 56% 57%,
+            var(--brun) 0 2px,
+            transparent 2.5px
+        );
+}
+
+.message-garde{
+    color:var(--brun);
+    font-size:1rem;
+    font-style:italic;
+}
+
+/*=====================================================
+ Contenu
+=====================================================*/
+
+.contenu{
+    position:relative;
+    z-index:6;
+    margin-bottom:24px;
+}
 
 #titre{
-
+    color:var(--vert);
     text-align:center;
+    font-size:1.35rem;
+    line-height:1.5;
+    font-weight:700;
+    font-style:italic;
+    margin:0 auto 19px;
+    max-width:590px;
+}
 
-    color:#2d5a27;
-
-    font-size:30px;
-
-    line-height:1.4;
-
-    margin-bottom:30px;
-
+.citation-garde{
+    display:none;
 }
 
 /*=====================================================
- Enigme
+ Énigme
 =====================================================*/
 
 #enigme{
-
-    font-size:21px;
-
-    line-height:1.8;
-
+    color:var(--encre);
+    font-size:1.08rem;
+    line-height:1.72;
     white-space:pre-line;
 
-    margin-bottom:35px;
+    padding:19px 22px;
 
+    background:rgba(255,238,195,.12);
+
+    border-top:1px solid rgba(196,181,151,.75);
+    border-bottom:1px solid rgba(196,181,151,.75);
+
+    box-shadow:inset 0 0 18px rgba(120,94,55,.035);
 }
 
 /*=====================================================
@@ -75,37 +439,45 @@ body{
 =====================================================*/
 
 .zone-reponse{
-
-    margin-top:20px;
-
+    position:relative;
+    z-index:6;
+    margin-top:22px;
 }
 
-/*=====================================================
- Champ réponse
-=====================================================*/
-
 input{
-
+    display:block;
     width:100%;
+    padding:13px 15px;
 
-    padding:15px;
+    font-family:Arial,Helvetica,sans-serif;
+    font-size:16px;
+    color:var(--encre);
 
-    font-size:20px;
+    background:rgba(247,237,216,.94);
 
-    border:1px solid #999;
+    border:1px solid #b7a987;
+    border-radius:4px;
 
-    border-radius:8px;
+    box-shadow:inset 0 1px 3px rgba(75,58,38,.08);
 
-    margin-bottom:20px;
+    margin-bottom:12px;
+}
 
+input::placeholder{
+    color:#8b806d;
+}
+
+input:focus{
+    outline:none;
+    border-color:var(--vert);
+    box-shadow:
+        0 0 0 2px rgba(61,91,56,.11),
+        inset 0 1px 3px rgba(75,58,38,.08);
 }
 
 input:disabled{
-
-    background:#f3f3f3;
-
-    color:#666;
-
+    background:#e1d6c0;
+    color:#70695c;
 }
 
 /*=====================================================
@@ -113,31 +485,42 @@ input:disabled{
 =====================================================*/
 
 button{
-
+    display:block;
     width:100%;
+    padding:13px 16px;
 
-    padding:15px;
+    font-family:Georgia,"Times New Roman",serif;
+    font-size:1rem;
+    font-weight:700;
 
-    border:none;
+    color:#f8f5ed;
 
-    border-radius:8px;
+    background:linear-gradient(
+        #405f3b,
+        var(--vert) 55%,
+        #30492d
+    );
 
-    background:#2d5a27;
-
-    color:white;
-
-    font-size:20px;
+    border:1px solid var(--vert-fonce);
+    border-radius:4px;
 
     cursor:pointer;
 
-    transition:.2s;
+    box-shadow:
+        0 2px 4px rgba(0,0,0,.15),
+        inset 0 1px rgba(255,255,255,.08);
 
+    transition:
+        background .18s ease,
+        transform .12s ease;
 }
 
 button:hover{
+    background:var(--vert-fonce);
+}
 
-    background:#21441d;
-
+button:active{
+    transform:translateY(1px);
 }
 
 /*=====================================================
@@ -145,15 +528,25 @@ button:hover{
 =====================================================*/
 
 #message{
-
-    margin-top:35px;
-
+    position:relative;
+    z-index:6;
+    margin-top:22px;
     text-align:center;
-
-    font-size:22px;
-
+    color:var(--encre);
+    font-size:1rem;
     line-height:1.6;
+}
 
+.signature{
+    position:relative;
+    z-index:6;
+    margin-top:25px;
+    padding-top:13px;
+    border-top:1px solid var(--ligne);
+    text-align:right;
+    color:var(--brun);
+    font-size:.95rem;
+    font-style:italic;
 }
 
 /*=====================================================
@@ -161,31 +554,26 @@ button:hover{
 =====================================================*/
 
 .mode-test{
-
     text-align:center;
-
+    padding:4px 0;
 }
 
 .mode-test h2{
-
-    color:#2d5a27;
-
-    margin-bottom:20px;
-
+    color:var(--vert);
+    font-size:1.4rem;
+    line-height:1.3;
+    margin-bottom:14px;
 }
 
 .mode-test p{
-
-    margin-bottom:25px;
-
-    font-size:19px;
-
+    color:var(--brun-fonce);
+    font-size:1rem;
+    line-height:1.5;
+    margin-bottom:18px;
 }
 
 .mode-test button{
-
-    margin-bottom:12px;
-
+    margin-bottom:10px;
 }
 
 /*=====================================================
@@ -195,40 +583,135 @@ button:hover{
 @media (max-width:600px){
 
     body{
-
-        padding:10px;
-
+        padding:7px;
     }
 
-    .container{
+    .page{
+        min-height:calc(100vh - 14px);
+        align-items:center;
+    }
 
-        padding:20px;
+    .carnet{
+        min-height:0;
+        padding:27px 17px 22px 39px;
+    }
 
+    .carnet::before{
+        left:10px;
+        top:28px;
+        bottom:28px;
+        width:14px;
+
+        background:
+            radial-gradient(
+                circle,
+                #8a795d 0 2.5px,
+                rgba(88,70,47,.20) 3px 4px,
+                transparent 4.5px
+            )
+            center 7px / 14px 29px repeat-y;
+    }
+
+    .titre-principal{
+        font-size:1.52rem;
+    }
+
+    .message-garde{
+        font-size:.92rem;
+    }
+
+    .entete{
+        padding-bottom:14px;
+        margin-bottom:19px;
+    }
+
+    .ornement{
+        width:165px;
+        height:18px;
+    }
+
+    .ornement::before,
+    .ornement::after{
+        top:8px;
+        width:55px;
     }
 
     #titre{
-
-        font-size:25px;
-
+        font-size:1.15rem;
+        line-height:1.45;
+        margin-bottom:16px;
     }
 
     #enigme{
-
-        font-size:19px;
-
+        font-size:.98rem;
+        line-height:1.55;
+        padding:14px 12px;
     }
 
-    input,
+    .zone-reponse{
+        margin-top:18px;
+    }
+
+    input{
+        margin-bottom:10px;
+    }
+
     button{
-
-        font-size:18px;
-
+        padding:12px;
+        font-size:16px;
     }
 
     #message{
-
-        font-size:20px;
-
+        margin-top:18px;
+        font-size:.95rem;
+        line-height:1.5;
     }
 
+    .signature{
+        margin-top:19px;
+        padding-top:10px;
+        font-size:.88rem;
+    }
 }
+
+/*=====================================================
+ Très petits écrans
+=====================================================*/
+
+@media (max-width:380px){
+
+    body{
+        padding:5px;
+    }
+
+    .page{
+        min-height:calc(100vh - 10px);
+    }
+
+    .carnet{
+        padding:22px 13px 18px 35px;
+    }
+
+    .carnet::before{
+        left:8px;
+    }
+
+    .titre-principal{
+        font-size:1.38rem;
+    }
+
+    #titre{
+        font-size:1.05rem;
+    }
+
+    #enigme{
+        font-size:.92rem;
+        line-height:1.5;
+        padding:12px 10px;
+    }
+
+    .message-garde{
+        font-size:.87rem;
+    }
+}
+
