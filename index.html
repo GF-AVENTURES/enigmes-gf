@@ -16,36 +16,96 @@
 
 <body>
 
-    <div class="container">
+    <main class="page">
 
-        <h1 id="titre"></h1>
+        <section class="carnet">
+<div class="dechirures"></div>
 
-        <div id="enigme"></div>
+            <!-- ============================= -->
+            <!-- En-tête -->
+            <!-- ============================= -->
 
-        <div class="zone-reponse">
+            <header class="entete">
 
-            <input
-                type="text"
-                id="reponse"
-                placeholder="Votre réponse"
-                autocomplete="off">
+                <h1 class="titre-principal">
+                    Le Dernier Secret du Garde
+                </h1>
 
-            <button
-                id="btnValider"
-                type="button"
-                onclick="verifier()">
-                Valider
-            </button>
+                <div class="ornement"></div>
 
-        </div>
+                <p class="message-garde">
+                    Message du Garde
+                </p>
 
-        <div id="message"></div>
+            </header>
 
-    </div>
+            <!-- ============================= -->
+            <!-- Contenu -->
+            <!-- ============================= -->
+
+            <section class="contenu">
+
+                <h2 id="titre"></h2>
+
+                <div class="citation-garde"></div>
+
+                <div id="enigme"></div>
+
+            </section>
+
+            <!-- ============================= -->
+            <!-- Réponse -->
+            <!-- ============================= -->
+
+            <section class="zone-reponse">
+
+                <label for="reponse" class="titre-reponse">
+                    Votre réponse
+                </label>
+
+                <input
+                    type="text"
+                    id="reponse"
+                    placeholder="Saisissez votre réponse"
+                    autocomplete="off">
+
+                <button
+                    id="btnValider"
+                    type="button"
+                    onclick="verifier()">
+
+                    Valider
+
+                </button>
+
+            </section>
+
+            <!-- ============================= -->
+            <!-- Message -->
+            <!-- ============================= -->
+
+            <section class="zone-message">
+
+                <div id="message"></div>
+
+            </section>
+
+            <!-- ============================= -->
+            <!-- Signature -->
+            <!-- ============================= -->
+
+            <footer class="signature">
+
+                <span>Le Garde veille encore...</span>
+
+            </footer>
+
+        </section>
+
+    </main>
 
     <script src="script.js"></script>
 
 </body>
 
 </html>
-
