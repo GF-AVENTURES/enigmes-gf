@@ -80,7 +80,7 @@ const dernierSecret = {
 const enigmeUltime = {
   titre: "🔐 L'ÉNIGME ULTIME — Le dernier ordre du Garde",
 
-  enigme: `Quatre Sceaux vous ont livré leurs chiffres.
+  enigme: `Quatre défis vous ont livré leurs chiffres.
 Quatre chiffres attendent désormais de retrouver leur place.
 
 Pour ouvrir le coffre, vous devrez suivre l'ordre que le Garde a établi.
